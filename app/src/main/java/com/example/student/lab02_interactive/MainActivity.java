@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         int a = getqua() ;
         dis(a);
+
     }
 
     private void dis(int a) {
@@ -33,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
         String nmstring = NumberFormat.getCurrencyInstance().format(total) ;
         pri.setText(nmstring); //轉金錢NT
 
+
     }
+
+
     public void add(View view) {
         int addint = getqua();
         addint ++ ;
@@ -49,9 +53,11 @@ public class MainActivity extends AppCompatActivity {
             dis(addint);
         }
     }
+
+
     private int getqua() {
-        TextView qua = (TextView)findViewById(R.id.quantity_view);
-        String addstring = qua.getText().toString() ;
-        return Integer.parseInt(addstring);
+        TextView qua = (TextView)findViewById(R.id.quantity_view); //數量
+        String addstring = qua.getText().toString() ; //轉String
+        return Integer.parseInt(addstring); //轉INT
     }
 }

@@ -65,8 +65,9 @@
         android:text="NT$ 0"
         android:textSize="16dp"
         android:textColor="@android:color/black"
-
         />
+
+
 
     <Button
         android:layout_height="wrap_content"
