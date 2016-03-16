@@ -3,6 +3,7 @@ package com.example.student.lab02_interactive;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -29,18 +30,29 @@ public class MainActivity extends AppCompatActivity {
 
         displayTotalPrice();
     }
-    private void displayTotalPrice(){          //輸出金額
-
-        TextView priceTextView = (TextView)findViewById(R.id.price_text_view) ; //取金額值
-        int total = mQuantity * mPrice ;
-
-        String myString = NumberFormat.getCurrencyInstance().format(total) ; //轉NT
+    private void displayTotalPrice() {          //輸出金額
 
 
-        String message = myString + (mQuantity == 0 ? "\nFree" : "\nThank you!") ;
-        priceTextView.setText(message);
+        final CheckBox CheckBox = (CheckBox) findViewById(R.id.CheckBox_CheckBox);
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view); //取金額值
+        int total = mQuantity * mPrice;
+
+        if (CheckBox.isChecked()){
+            total += 30 ;
+        }
+        String myString = NumberFormat.getCurrencyInstance().format(total); //轉NT
+
+
+        if (CheckBox.isChecked()) {
+            String message = myString + (mQuantity == 0 ? "\nFree\n加購泡菜" : "\nThank you!\n" +
+                    "加購泡菜");
+            priceTextView.setText(message);
+
+        } else {
+            String message = myString + (mQuantity == 0 ? "\nFree" : "\nThank you!");
+            priceTextView.setText(message);
+        }
     }
-
     public void increment(View view){
         ++mQuantity ;
         displayQuantity();
